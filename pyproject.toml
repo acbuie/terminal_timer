@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "terminal-timer"
+version = "0.1.0"
+description = "A simple CLI timer, with a progress bar!"
+authors = ["acbuie <aidancbuie@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "terminal_timer", from="src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+typer = "^0.7.0"
+rich = "^13.1.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.12.0"
+ruff = "^0.0.223"
+mypy = "^0.991"
+pre-commit = "^2.21.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+terminal-timer = "terminal_timer.main:main"
+
+[tool.black]
+target-version = ["py311"]
+
+[tool.mypy]
+pretty = true
+strict = true
+
+[tool.ruff]
+line-length = 88
+select = ["D", "E", "F", "I001", "N"]
+# Google docstring style
+ignore = ["D105", "D107", "D203", "D204", "D213", "D215", "D400", "D404", "D406", "D407", "D408", "D409", "D413"]
+unfixable = ["F401", "F841"]
